@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IELTS Listening – TEST 15 (Highlight Fixed)</title>
+<style>
+:root{
+  --ink:#222; --muted:#5a5a5a; --border:#cfcfcf; --accent:#0c5db3;
+  --bg:#e6f0ff; --chipw:280px; --chiph:38px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);
+     display:flex;flex-direction:column;align-items:center;padding:22px 16px 100px}
+.page{width:100%;max-width:980px}
+h1{font-size:20px;margin:0 0 6px;text-align:center}
+.part-head{display:flex;justify-content:space-between;align-items:flex-end;margin:8px 0;font-weight:700}
+.instruction{text-align:center;margin:6px 0 12px;color:#333}
+.paper{border:1.5px solid #111;border-radius:8px;background:#e6f0ff;padding:18px;margin-bottom:16px}
+.paper h2{text-align:center;margin:0 0 12px}
+.paper h3{margin:14px 0 8px}
+input.line, input.answer, .answer{border:1px solid #666;border-radius:4px;padding:3px 6px;min-width:105px;text-align:center}
+input.answer{width:170px} input.sm{width:120px}
+fieldset{border:none;margin:0 0 12px;padding:0}
+legend{font-weight:700;margin:0 0 6px}
+label{display:block;margin:2px 0;cursor:pointer}
+.stage{display:grid;grid-template-columns:auto 40px auto;align-items:start}
+.questions{display:flex;flex-direction:column;gap:16px}
+.row{display:flex;align-items:center;gap:8px}
+.qnum{font-weight:700}
+.drop{width:var(--chipw);height:var(--chiph);border:2px dashed #9aa9bd;border-radius:6px;background:#e6f0ff;
+      display:flex;justify-content:center;align-items:center}
+.bank{display:flex;flex-direction:column;gap:10px}
+.chip{width:var(--chipw);height:var(--chiph);display:flex;align-items:center;padding:6px 10px;border:1px solid var(--border);
+      border-radius:8px;background:#f7f7f7;cursor:grab;user-select:none}
+.chip:active{cursor:grabbing}
+.navbar{position:fixed;left:0;right:0;bottom:0;background:#e6f0ff;border-top:1px solid #ccc;display:flex;align-items:center;gap:14px;padding:8px 12px;overflow-x:auto;white-space:nowrap;z-index:1000}
+.nav-label{font-weight:700;cursor:pointer}
+.nav-btn{width:30px;height:30px;line-height:28px;border:1px solid #999;border-radius:4px;text-align:center;text-decoration:none;color:#111;display:flex;align-items:center;justify-content:center;font-size:13px}
+.nav-btn.answered{background:#cfe8ff}
+.sub-nav{display:none;gap:4px}
+#submitBtn{margin-left:auto;background:var(--accent);color:#fff;border:none;border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer}
+.part{display:none}.part.active{display:block}
+
+/* Highlight UI */
+.mini-toolbar{position:absolute;background:#e6f0ff;border:1px solid #ccc;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.15);display:none;z-index:2000}
+.mini-toolbar button{background:var(--accent);color:#fff;border:none;border-radius:6px;padding:6px 10px;margin:6px;cursor:pointer}
+.mini-toolbar .remove{background:#c62828}
+/* The highlight span is purely visual; no margins/borders to avoid reflow */
+.hl{background:#f4c20d88;color:inherit}
+.drag-ok{background:#d4edda}.drag-bad{background:#fdecea}
+.score{display:none;margin:10px 0 12px;padding:8px 12px;border-left:6px solid #2e7d32;background:#e9f7ef;font-weight:700}
+</style>
+</head>
+<body>
+<div id="addToolbar" class="mini-toolbar"><button id="addHL">Highlight</button></div>
+<div id="removeToolbar" class="mini-toolbar"><button id="removeHL" class="remove">Remove</button></div>
+
+<div class="page">
+  <h1>IELTS Listening — TEST 15</h1>
+  <div id="score" class="score"></div>
+  <div id="progress" style="margin-bottom:8px;color:#555">Progress: 0/40 answered</div>
+
+  <!-- PART 1 -->
+  <section id="p1" class="part active">
+    <div class="part-head"><div><strong>PART 1</strong></div><div><em>Questions 1–10</em></div></div>
+    <p class="instruction">Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+    <div class="paper select-root">
+      <h2>Rooms to hire for parties</h2>
+      <h3>The Exchange Hotel</h3>
+      <ul>
+        <li>number of seated guests possible: <strong>45</strong></li>
+        <li>room on the <input id="q1" class="answer" placeholder="1"> floor</li>
+        <li>large, bright room with a good <input id="q2" class="sm answer" placeholder="2"></li>
+        <li>cost: £32 with buffet per person (minimum number of people: <strong>3</strong>)</li>
+        <li>available any <input id="q4" class="sm answer" placeholder="4"> in April</li>
+      </ul>
+
+      <h3>The <input id="q5" class="sm answer" placeholder="5"> Hotel</h3>
+      <ul>
+        <li>large room (seats 75)</li>
+        <li>in the <input id="q6" class="sm answer" placeholder="6"> area of the city</li>
+        <li>room on ground floor with a small <input id="q7" class="answer" placeholder="7"> for guests to use</li>
+        <li>cost: £36 with buffet per person</li>
+        <li>available: 13th and 20th April</li>
+      </ul>
+
+      <h3>Booking information</h3>
+      <ul>
+        <li>Bookings held for a <input id="q8" class="sm answer" placeholder="8">.</li>
+        <li>Final payment of <input id="q9" class="sm answer" placeholder="9"> % required 10 days before booking</li>
+        <li>Need to confirm guests and menu 5 days in advance</li>
+        <li>To book, phone <input id="q10" class="answer" placeholder="10"> on Monday</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PART 2 -->
+  <section id="p2" class="part">
+    <div class="part-head"><div><strong>PART 2</strong></div><div><em>Questions 11–20</em></div></div>
+    <div class="paper select-root">
+      <h2>Museum Tour</h2>
+      <fieldset>
+        <legend>11. What does the tour guide advise the visitors to do in the museum today?</legend>
+        <label><input type="radio" name="q11" value="A"> A. see the most popular exhibits first</label>
+        <label><input type="radio" name="q11" value="B"> B. pay a brief visit to each gallery</label>
+        <label><input type="radio" name="q11" value="C"> C. go to the photography gallery last</label>
+      </fieldset>
+      <fieldset>
+        <legend>12. The museum was designed by William Craven, who also designed…</legend>
+        <label><input type="radio" name="q12" value="A"> A. a textile factory</label>
+        <label><input type="radio" name="q12" value="B"> B. the town hall</label>
+        <label><input type="radio" name="q12" value="C"> C. the railway station</label>
+      </fieldset>
+      <fieldset>
+        <legend>13. The museum won an award for the preservation of the</legend>
+        <label><input type="radio" name="q13" value="A"> A. staircase</label>
+        <label><input type="radio" name="q13" value="B"> B. floor</label>
+        <label><input type="radio" name="q13" value="C"> C. windows</label>
+      </fieldset>
+      <fieldset>
+        <legend>14. Most of the money for the project came from</legend>
+        <label><input type="radio" name="q14" value="A"> A. the public</label>
+        <label><input type="radio" name="q14" value="B"> B. the government</label>
+        <label><input type="radio" name="q14" value="C"> C. local businesses</label>
+      </fieldset>
+      <fieldset>
+        <legend>15. Over the next five years, the museum will invest mainly in…</legend>
+        <label><input type="radio" name="q15" value="A"> A. restoring existing collections</label>
+        <label><input type="radio" name="q15" value="B"> B. developing education programs</label>
+        <label><input type="radio" name="q15" value="C"> C. purchasing new objects for display</label>
+      </fieldset>
+      <fieldset>
+        <legend>16. Visitors who are interested in learning more about the exhibits should</legend>
+        <label><input type="radio" name="q16" value="A"> A. visit museum’s website</label>
+        <label><input type="radio" name="q16" value="B"> B. read the leaflets on display</label>
+        <label><input type="radio" name="q16" value="C"> C. attend the monthly lectures</label>
+      </fieldset>
+    </div>
+
+    <div class="paper select-root">
+      <h2>Questions 17–20</h2>
+      <p class="instruction"><strong>What information does the guide give about each of the following collections?</strong><br>Choose FOUR answers from the box and drag one to each collection.</p>
+      <div class="stage" id="dnd">
+        <div class="questions">
+          <div class="row"><span class="qnum">17</span>18th-century paintings <span class="drop" data-slot="17"></span><input type="hidden" id="q17"></div>
+          <div class="row"><span class="qnum">18</span>Farnley collection <span class="drop" data-slot="18"></span><input type="hidden" id="q18"></div>
+          <div class="row"><span class="qnum">19</span>kitchen appliances <span class="drop" data-slot="19"></span><input type="hidden" id="q19"></div>
+          <div class="row"><span class="qnum">20</span>fashion gallery <span class="drop" data-slot="20"></span><input type="hidden" id="q20"></div>
+        </div>
+        <div></div>
+        <div>
+          <div class="bank" id="bank">
+            <div class="chip" draggable="true" data-key="A">has been shown in different museums</div>
+            <div class="chip" draggable="true" data-key="B">consists of work by a local resident</div>
+            <div class="chip" draggable="true" data-key="C">has exhibits from various countries</div>
+            <div class="chip" draggable="true" data-key="D">in only on temporary display</div>
+            <div class="chip" draggable="true" data-key="E">shows things that are no longer common</div>
+            <div class="chip" draggable="true" data-key="F">is on loan from foreign museum</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PART 3 -->
+  <section id="p3" class="part">
+    <div class="part-head"><div><strong>PART 3</strong></div><div><em>Questions 21–30</em></div></div>
+    <div class="paper select-root">
+      <h2>Archaeology Course</h2>
+      <ul>
+        <li>Can be combined with any other subject except <input id="q21" class="answer" placeholder="21"></li>
+        <li>Has three <input id="q22" class="answer" placeholder="22"> modules in first semester?</li>
+      </ul>
+      <h3>Module 1</h3>
+      <p>Title: <input id="q23" class="answer" placeholder="23"><br>Lecturer: Dr. Morris<br>Learning method: Lectures and practical sessions<br>Content: Based on processes</p>
+      <ul>
+        <li>recording</li>
+        <li><input id="q24" class="answer sm" placeholder="24"></li>
+        <li>interpretation</li>
+        <li>display</li>
+      </ul>
+      <p>Assessment: By <input id="q25" class="answer sm" placeholder="25"></p>
+
+      <h3>Module 2</h3>
+      <p>Title: <input id="q26" class="answer" placeholder="26"><br>Lecturer: Prof. Elliot<br>Content: <input id="q27" class="answer" placeholder="27"> and development of built environments<br>Assessment: By <input id="q28" class="answer sm" placeholder="28"> examination</p>
+
+      <h3>Module 3</h3>
+      <p>Title: Method and Science<br>Lecturer: Dr. Thompson<br>Content: Standard techniques in fieldwork and analysis<br>Learning method: 50% lab work, 50% <input id="q29" class="answer sm" placeholder="29"><br>Site survey at end of module (the <input id="q30" class="answer sm" placeholder="30"> is to be announced later)</p>
+    </div>
+  </section>
+
+  <!-- PART 4 -->
+  <section id="p4" class="part">
+    <div class="part-head"><div><strong>PART 4</strong></div><div><em>Questions 31–40</em></div></div>
+    <div class="paper select-root">
+      <h2>After Action Review Process</h2>
+      <p><b>Background</b><br>A way of evaluating during a project in order to make improvements<br>Developed by the <input id="q31" class="answer sm" placeholder="31"></p>
+      <p><b>Benefits</b><br>Not just for large projects can also be used after:</p>
+      <ul>
+        <li>a staff meeting</li>
+        <li><input id="q32" class="answer sm" placeholder="32"></li>
+        <li>incident</li>
+      </ul>
+      <p>Develops better team communication because of the emphasis on <input id="q33" class="answer sm" placeholder="33"></p>
+      <p><b>What is an After Action Review?</b><br>It’s a meeting that:</p>
+      <ul>
+        <li>concentrates on results and the <input id="q34" class="answer sm" placeholder="34"> for them</li>
+        <li>encourages participation</li>
+        <li>stresses the need to <input id="q35" class="answer sm" placeholder="35"> each other</li>
+      </ul>
+      <p><b>Things to remember when conducting an After Action Review</b></p>
+      <ul>
+        <li>Use an external facilitator (so stronger team members cannot dominate)</li>
+        <li>To encourage participation, get the group’s thoughts in <input id="q36" class="answer sm" placeholder="36"></li>
+        <li>Remember to use <input id="q37" class="answer sm" placeholder="37"> questions</li>
+        <li>Give any recommendations to other team <input id="q38" class="answer sm" placeholder="38"></li>
+        <li>Make sure you follow up on ideas and provide <input id="q39" class="answer sm" placeholder="39"> for employees</li>
+        <li>Remember to check the <input id="q40" class="answer sm" placeholder="40"></li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<nav class="navbar">
+  <span class="nav-label" onclick="showPart(1)">Part 1</span><div class="sub-nav" id="nav1"></div>
+  <span class="nav-label" onclick="showPart(2)">Part 2</span><div class="sub-nav" id="nav2"></div>
+  <span class="nav-label" onclick="showPart(3)">Part 3</span><div class="sub-nav" id="nav3"></div>
+  <span class="nav-label" onclick="showPart(4)">Part 4</span><div class="sub-nav" id="nav4"></div>
+  <button id="submitBtn" type="button">Submit</button>
+</nav>
+
+<script>
+/* ===== nav build ===== */
+(function buildNav(){
+  const ranges=[[1,10],[11,20],[21,30],[31,40]];
+  ranges.forEach((r,idx)=>{
+    const wrap=document.getElementById('nav'+(idx+1));
+    for(let i=r[0];i<=r[1];i++){
+      const a=document.createElement('a');
+      a.href='#q'+i; a.textContent=i; a.className='nav-btn'; a.id='navbtn'+i;
+      a.addEventListener('click',e=>{e.preventDefault(); showPart(idx+1); document.getElementById('q'+i)?.scrollIntoView({behavior:'smooth',block:'center'});});
+      wrap.appendChild(a);
+    }
+    wrap.style.display = idx===0 ? 'flex' : 'none';
+  });
+})();
+function showPart(n){
+  document.querySelectorAll('.part').forEach((p,i)=>p.classList.toggle('active', i===n-1));
+  document.querySelectorAll('.sub-nav').forEach((s,i)=>s.style.display=(i===n-1)?'flex':'none');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* ===== Stable highlighter (wraps ONLY text nodes) ===== */
+const addTb=document.getElementById('addToolbar');
+const rmTb=document.getElementById('removeToolbar');
+let savedRange=null, targetHL=null;
+
+function place(tb,rect){tb.style.left=(rect.left+window.scrollX)+'px';tb.style.top=(rect.top+window.scrollY-36)+'px';tb.style.display='block'}
+function hideTB(){addTb.style.display='none'; rmTb.style.display='none'}
+
+function textNodesInRange(range){
+  const nodes=[];
+  const root = range.commonAncestorContainer;
+  const walker=document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode(node){
+      if(!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+      const nr=document.createRange();
+      nr.setStart(node,0); nr.setEnd(node,node.length);
+      // check overlap
+      if(range.compareBoundaryPoints(Range.END_TO_START, nr) < 0 &&
+         range.compareBoundaryPoints(Range.START_TO_END, nr) > 0){
+        return NodeFilter.FILTER_ACCEPT;
+      }
+      return NodeFilter.FILTER_REJECT;
+    }
+  });
+  let n; while(n=walker.nextNode()) nodes.push(n);
+  return nodes;
+}
+
+function highlightRangeStable(range){
+  const nodes=textNodesInRange(range);
+  nodes.forEach(node=>{
+    const start = (node===range.startContainer)? range.startOffset : 0;
+    const end   = (node===range.endContainer)? range.endOffset : node.length;
+    if(end<=start) return;
+    const mid=node.splitText(start);
+    const tail=mid.splitText(end-start);
+    const span=document.createElement('span'); span.className='hl';
+    mid.parentNode.insertBefore(span, mid);
+    span.appendChild(mid);
+    // merge text nodes around to avoid fragmentation
+    span.previousSibling && span.previousSibling.nodeType===3 && span.previousSibling.nodeValue==='' && span.previousSibling.remove();
+    tail && tail.nodeType===3 && tail.nodeValue==='' && tail.remove();
+  });
+}
+
+function unwrapHL(el){
+  const parent=el.parentNode;
+  const text=document.createTextNode(el.textContent);
+  parent.replaceChild(text, el);
+  parent.normalize();
+}
+
+document.addEventListener('mouseup',e=>{
+  if(e.target.closest('.mini-toolbar')) return;
+  const sel=window.getSelection();
+  const root = e.target.closest('.select-root') || document.querySelector('.page');
+  if(sel && sel.rangeCount && sel.toString().trim() && root.contains(sel.anchorNode)){
+    savedRange=sel.getRangeAt(0).cloneRange();
+    place(addTb, savedRange.getBoundingClientRect());
+  }else{
+    hideTB();
+  }
+});
+document.getElementById('addHL').addEventListener('click',()=>{
+  if(!savedRange) return;
+  highlightRangeStable(savedRange);
+  hideTB();
+  try{window.getSelection().removeAllRanges();}catch(e){}
+  savedRange=null;
+});
+document.addEventListener('click',e=>{
+  if(e.target.classList?.contains('hl')){
+    targetHL=e.target; place(rmTb, e.target.getBoundingClientRect());
+  } else if(!e.target.closest('.mini-toolbar')){
+    rmTb.style.display='none';
+  }
+});
+document.getElementById('removeHL').addEventListener('click',()=>{
+  if(targetHL){unwrapHL(targetHL); targetHL=null;}
+  rmTb.style.display='none';
+});
+
+/* ===== Drag & drop ===== */
+(function(){
+  const bank=document.getElementById('bank');
+  function sortBank(){[...bank.children].sort((a,b)=>a.dataset.key.localeCompare(b.dataset.key)).forEach(el=>bank.appendChild(el));}
+  bank.addEventListener('dragover',e=>e.preventDefault());
+  bank.addEventListener('drop',e=>{e.preventDefault(); const d=document.querySelector('.chip.dragging'); if(!d) return; const from=d.closest('.drop'); if(from){document.getElementById('q'+from.dataset.slot).value='';} bank.appendChild(d); sortBank(); updateProgress();});
+  bank.querySelectorAll('.chip').forEach(c=>{c.addEventListener('dragstart',()=>c.classList.add('dragging')); c.addEventListener('dragend',()=>c.classList.remove('dragging'));});
+  document.querySelectorAll('.drop').forEach(drop=>{
+    drop.addEventListener('dragover',e=>e.preventDefault());
+    drop.addEventListener('drop',e=>{e.preventDefault(); const d=document.querySelector('.chip.dragging'); if(!d) return; const exist=drop.querySelector('.chip'); if(exist) bank.appendChild(exist); drop.appendChild(d); document.getElementById('q'+drop.dataset.slot).value=d.dataset.key; sortBank(); updateProgress();});
+  });
+})();
+
+/* ===== Progress and scoring ===== */
+function updateProgress(){
+  let a=0;
+  for(let i=1;i<=40;i++){
+    let filled=false;
+    if(i>=11 && i<=16){
+      filled=!!document.querySelector('input[name="q'+i+'"]:checked');
+    } else if(i>=17 && i<=20){
+      filled=!!document.getElementById('q'+i).value;
+    } else {
+      const el=document.getElementById('q'+i);
+      filled=!!(el && el.value.trim());
+    }
+    document.getElementById('navbtn'+i).classList.toggle('answered', filled);
+    if(filled) a++;
+  }
+  document.getElementById('progress').textContent='Progress: '+a+'/40 answered';
+}
+document.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('input',updateProgress));
+document.querySelectorAll('input[type="radio"]').forEach(el=>el.addEventListener('change',updateProgress));
+
+const KEY = {1:['5th','fifth'],2:['view'],3:['35','thirty five','thirty-five','thirtyfive'],4:['saturday'],5:['limerick'],6:['business'],7:['garden'],8:['week'],9:['65','sixty five','sixty-five','sixtyfive'],10:['044298611','044 298 611'],11:'A',12:'B',13:'A',14:'C',15:'A',16:'C',17:'C',18:'B',19:'E',20:'D',21:['classical history'],22:['compulsory'],23:['object matters'],24:['classification'],25:['coursework'],26:['towns and cities','towns & cities'],27:['origins'],28:['oral'],29:['seminars'],30:['location'],31:['army'],32:['safety'],33:['learning'],34:['reasons'],35:['trust'],36:['writing'],37:['open'],38:['leaders'],39:['training'],40:['time']};
+
+function submitAll(){
+  let score=0;
+  function mark(q, ok, el){const nav=document.getElementById('navbtn'+q); nav.classList.remove('correct','incorrect'); nav.classList.add(ok?'correct':'incorrect'); if(el){el.classList.add(ok?'correct':'incorrect');}}
+  for(let q of [1,2,3,4,5,6,7,8,9,10,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40]){
+    const el=document.getElementById('q'+q); const val=(el.value||'').trim().toLowerCase().replace(/\\s+/g,' ');
+    const answers=Array.isArray(KEY[q])?KEY[q]:[KEY[q]]; const ok=answers.some(a=>a.toLowerCase()===(val)); if(ok) score++; mark(q, ok, el);
+  }
+  for(let q=11;q<=16;q++){const sel=document.querySelector('input[name="q'+q+'"]:checked');const val=sel?sel.value:''; const ok=val===KEY[q]; if(ok) score++; mark(q, ok);}
+  for(let q=17;q<=20;q++){const val=(document.getElementById('q'+q).value||'').toUpperCase(); const ok=val===KEY[q]; if(ok) score++; const row=document.querySelector('.drop[data-slot=\"'+q+'\"]').parentElement; row.classList.add(ok?'drag-ok':'drag-bad'); mark(q, ok);}
+  const box=document.getElementById('score'); box.textContent='Score: '+score+'/40 correct'; box.style.display='block'; window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('submitBtn').addEventListener('click',submitAll);
+
+showPart(1);
+</script>
+</body>
+</html>
